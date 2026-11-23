@@ -1,1 +1,775 @@
-file:///C:/Users/Johana/Downloads/franciscos-pizza-cocina-animada.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Francisco's Pizza | Escape Room de Fracciones</title>
+
+<style>
+:root {
+  --rojo:#a93625;
+  --crema:#fff3df;
+  --madera:#583522;
+  --dorado:#e5b66e;
+  --verde:#47734b;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Georgia,serif;
+  color:#38251b;
+  background:#211713;
+}
+header{
+  text-align:center;
+  padding:22px 12px;
+  color:#fff4df;
+  background:linear-gradient(120deg,#421b15,#a93625,#59241b);
+  border-bottom:4px solid var(--dorado);
+}
+header h1{font-size:clamp(25px,4vw,42px);margin:0}
+header p{margin:8px 0 0;color:#f6d9b5;font-family:Arial}
+.container{max-width:1100px;margin:auto;padding:18px}
+.kitchen{
+  position:relative;
+  min-height:470px;
+  overflow:hidden;
+  border:5px solid #68442d;
+  border-radius:18px;
+  background:#38251b;
+  box-shadow:0 15px 40px #0009;
+  isolation:isolate;
+}
+.kitchen-bg{
+  position:absolute;
+  inset:0;
+  z-index:-2;
+  background:
+    linear-gradient(90deg,#170d09e8 0%,#21130bb8 48%,#1b100b35 100%),
+    url("https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+  animation:ambiente 25s ease-in-out infinite alternate;
+}
+@keyframes ambiente{
+  from{transform:scale(1)}
+  to{transform:scale(1.07)}
+}
+.kitchen-content{
+  position:relative;
+  min-height:470px;
+  padding:35px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  color:white;
+}
+.kitchen-label{
+  color:#f4c77e;
+  letter-spacing:3px;
+  font: bold 12px Arial;
+}
+.kitchen h2{
+  font-size:clamp(32px,5vw,55px);
+  max-width:550px;
+  margin:15px 0;
+  text-shadow:0 4px 12px #000;
+}
+.kitchen p{
+  max-width:480px;
+  line-height:1.7;
+  font:16px/1.7 Arial;
+  color:#fff0dc;
+}
+.oven{
+  position:absolute;
+  right:5%;
+  bottom:9%;
+  width:240px;
+  height:205px;
+  border:10px solid #4b3022;
+  border-radius:110px 110px 20px 20px;
+  background:
+    linear-gradient(0deg,#f05b1c,#ffb13d 45%,#32180d 75%);
+  box-shadow:0 0 30px #ff7c2c99,inset 0 0 20px #160b06;
+  animation:horno 2s infinite alternate;
+}
+.oven:before{
+  content:"";
+  position:absolute;
+  left:25px;right:25px;bottom:0;
+  height:95px;
+  border-radius:100px 100px 5px 5px;
+  background:radial-gradient(ellipse,#ffdc74,#e85b20 50%,#3b160a 80%);
+}
+.oven:after{
+  content:"FORNO A LEGNA";
+  position:absolute;
+  bottom:-34px;
+  left:0;right:0;
+  text-align:center;
+  color:#f6d29b;
+  font:bold 11px Arial;
+  letter-spacing:2px;
+}
+@keyframes horno{
+  from{filter:brightness(.9)}
+  to{filter:brightness(1.25)}
+}
+.flame{
+  position:absolute;
+  right:15%;
+  bottom:36%;
+  font-size:40px;
+  animation:llama .5s infinite alternate;
+}
+@keyframes llama{
+  from{transform:scale(.9) rotate(-5deg)}
+  to{transform:scale(1.15) rotate(5deg)}
+}
+.steam{
+  position:absolute;
+  right:31%;
+  bottom:32%;
+  width:15px;
+  height:65px;
+  border-left:4px solid #ffffff88;
+  border-radius:50%;
+  filter:blur(3px);
+  animation:vapor 3s infinite;
+}
+.steam.two{right:35%;animation-delay:1s}
+.steam.three{right:27%;animation-delay:2s}
+@keyframes vapor{
+  0%{transform:translateY(15px);opacity:0}
+  40%{opacity:.8}
+  100%{transform:translateY(-70px);opacity:0}
+}
+.chef{
+  position:absolute;
+  right:5%;
+  top:7%;
+  padding:12px 18px;
+  border:1px solid #e5bd83;
+  border-radius:30px;
+  background:#21130dcc;
+  color:white;
+  font:bold 15px Arial;
+}
+.chef span{font-size:25px;margin-right:7px}
+.order{
+  position:absolute;
+  left:35px;
+  bottom:22px;
+  padding:12px 18px;
+  background:#f6e5c6;
+  color:#573622;
+  border-left:5px solid var(--rojo);
+  box-shadow:0 6px 15px #0008;
+  font:13px Arial;
+  transform:rotate(-2deg);
+}
+.panel{
+  margin:20px 0;
+  padding:24px;
+  border-radius:17px;
+  background:linear-gradient(145deg,#fffaf1,#f0dfc5);
+  border:1px solid #d7b78b;
+  box-shadow:0 8px 25px #0005;
+}
+.welcome{text-align:center}
+.welcome .chef-icon{font-size:65px}
+.welcome h2{color:var(--rojo)}
+button{
+  border:0;
+  border-radius:10px;
+  padding:13px 20px;
+  margin:6px 4px;
+  color:white;
+  background:linear-gradient(#c75236,#92311f);
+  font-weight:bold;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 4px 0 #64271c;
+}
+button:hover{filter:brightness(1.12);transform:translateY(-1px)}
+button:disabled{opacity:.5;cursor:not-allowed}
+input{
+  padding:13px;
+  border:2px solid #c99b66;
+  border-radius:9px;
+  font-size:18px;
+  width:100%;
+  max-width:280px;
+}
+.hidden{display:none!important}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  text-align:center;
+}
+.stat{
+  background:#fff0d6;
+  border-radius:12px;
+  padding:13px;
+}
+.stat strong{
+  display:block;
+  color:var(--rojo);
+  font-size:25px;
+}
+.progress{
+  height:13px;
+  background:#dfd0bc;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:12px;
+}
+.progress-bar{
+  height:100%;
+  width:0;
+  background:linear-gradient(90deg,#66894d,#a4b96b);
+  transition:width .4s;
+}
+.levels{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.level{
+  text-align:center;
+  padding:15px 8px;
+  border-radius:12px;
+  background:#f1dfc2;
+  border:2px solid transparent;
+  font:bold 14px Arial;
+}
+.level.active{border-color:#bd4b32;background:#ffe6c6}
+.level.done{background:#dcebd6}
+.question{
+  padding:22px;
+  border-left:6px solid var(--rojo);
+  background:#fff8ed;
+  border-radius:10px;
+  font:19px/1.6 Arial;
+  margin:15px 0;
+}
+.feedback{
+  min-height:48px;
+  padding:12px;
+  margin:12px 0;
+  border-radius:10px;
+  font:bold 16px Arial;
+}
+.feedback.good{background:#e0efda;color:#286b35}
+.feedback.bad{background:#fbe2d9;color:#9d3024}
+.feedback.hint{background:#fff0c9;color:#805819}
+.final-summary{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.final-summary div{
+  padding:15px;
+  text-align:center;
+  background:#fff0d6;
+  border-radius:12px;
+}
+.final-summary strong{
+  display:block;
+  color:var(--rojo);
+  font-size:25px;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:15px 0;
+  background:white;
+}
+th,td{
+  border:1px solid #dec49e;
+  padding:11px;
+  text-align:left;
+}
+th{background:#8f3928;color:white}
+footer{
+  text-align:center;
+  padding:22px;
+  color:#e9cda8;
+  font:13px Arial;
+}
+@media(max-width:700px){
+  .kitchen,.kitchen-content{min-height:430px}
+  .kitchen-content{padding:22px}
+  .kitchen h2{max-width:90%;font-size:34px}
+  .kitchen p{max-width:90%;font-size:13px}
+  .oven{width:135px;height:125px;right:5%;bottom:12%}
+  .oven:before{height:55px}
+  .chef{font-size:12px}
+  .order{left:15px;bottom:15px;max-width:48%;font-size:11px}
+  .levels{grid-template-columns:repeat(2,1fr)}
+  .final-summary{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🍕 FRANCISCO'S PIZZA 🍕</h1>
+  <p>Escape Room matemático · La aventura de las fracciones</p>
+</header>
+
+<main class="container">
+
+<section class="kitchen">
+  <div class="kitchen-bg"></div>
+  <div class="kitchen-content">
+    <div class="kitchen-label" id="kitchenLabel">PIZZERÍA ARTESANAL · ITALIA</div>
+    <h2 id="kitchenTitle">El secreto está en la masa.</h2>
+    <p id="kitchenDescription">
+      Bienvenido a nuestra cocina. Los pedidos están llegando
+      y necesitamos un pizzero que domine las fracciones.
+    </p>
+  </div>
+  <div class="chef"><span>👨‍🍳</span> Chef Francisco</div>
+  <div class="oven"></div>
+  <div class="flame">🔥</div>
+  <div class="steam"></div>
+  <div class="steam two"></div>
+  <div class="steam three"></div>
+  <div class="order">
+    <strong>COMANDA · MESA 04</strong>
+    <div id="orderStatus">Esperando al pizzero...</div>
+  </div>
+</section>
+
+<section class="panel welcome" id="welcome">
+  <div class="chef-icon">👨‍🍳🍕</div>
+  <h2>¡Bienvenido a Francisco's Pizza!</h2>
+  <p>
+    Soy Francisco. Mi pizzería necesita tu ayuda.
+    Resuelve los pedidos, prepara las recetas y demuestra
+    que eres un maestro de las fracciones.
+  </p>
+  <button onclick="startGame()">¡Comenzar aventura!</button>
+</section>
+
+<section class="panel hidden" id="statsPanel">
+  <div class="stats">
+    <div class="stat"><strong id="points">0</strong>Puntos</div>
+    <div class="stat"><strong id="solved">0</strong>Retos correctos</div>
+    <div class="stat"><strong id="progressText">0%</strong>Progreso</div>
+  </div>
+  <div class="progress"><div class="progress-bar" id="progress"></div></div>
+</section>
+
+<section class="panel">
+  <h2>📋 Estaciones de la pizzería</h2>
+  <div class="levels">
+    <div class="level active" id="level0">🍕<br>Pedidos de pizza</div>
+    <div class="level" id="level1">🥤<br>Las bebidas</div>
+    <div class="level" id="level2">🧀<br>Pedidos especiales</div>
+    <div class="level" id="level3">💰<br>El cajero</div>
+  </div>
+</section>
+
+<section class="panel hidden" id="game">
+  <h2 id="levelTitle">Estación</h2>
+  <p id="challengeNumber"></p>
+  <div class="question" id="question"></div>
+  <p><strong>✏️ Escribe tu respuesta:</strong></p>
+  <input id="answer" type="text" placeholder="Ejemplo: 3/4">
+  <br>
+  <button onclick="checkAnswer()">Comprobar respuesta</button>
+  <button onclick="showHint()">💡 Necesito una pista</button>
+  <div class="feedback" id="feedback"></div>
+  <button id="next" class="hidden" onclick="nextQuestion()">Siguiente reto ➜</button>
+</section>
+
+<section class="panel hidden" id="final">
+  <div style="text-align:center;font-size:65px">🏆🍕</div>
+  <h2>¡Felicidades, maestro pizzero!</h2>
+  <p id="finalMessage"></p>
+  <h2 id="finalPoints"></h2>
+  <div id="finalReport"></div>
+  <button onclick="resetGame()">Volver a jugar</button>
+</section>
+
+</main>
+
+<footer>
+  Francisco's Pizza · Matemáticas para grados 6.º, 7.º y 8.º
+</footer>
+
+<script>
+const levels = [
+{
+ title:"🍕 Estación 1: Pedidos de pizza",
+ scene:"La masa está lista. Calcula las porciones y prepara los pedidos.",
+ order:"Pedido de pizza · Mesa 01",
+ questions:[
+  {
+   text:"Ana come 3/8 de una pizza y Pedro come 2/8. ¿Qué fracción se comieron entre los dos?",
+   answer:5/8,
+   hint:"Como los denominadores son iguales, suma los numeradores."
+  },
+  {
+   text:"Una pizza tiene 12 porciones. Si se consume 3/4 de ella, ¿cuántas porciones se consumieron?",
+   answer:9,
+   hint:"Multiplica 12 por 3/4."
+  },
+  {
+   text:"De una pizza dividida en 8 partes se vendieron 3. ¿Qué fracción queda disponible?",
+   answer:5/8,
+   hint:"Resta las porciones vendidas al total."
+  }
+ ]
+},
+{
+ title:"🥤 Estación 2: Las bebidas",
+ scene:"Prepara las bebidas de la casa midiendo cada ingrediente.",
+ order:"Bebidas · Barra de preparación",
+ questions:[
+  {
+   text:"Para preparar una bebida se utiliza 1/2 litro de jugo y 1/4 litro de agua. ¿Cuánto líquido se utiliza en total?",
+   answer:3/4,
+   hint:"Busca un denominador común."
+  },
+  {
+   text:"Una jarra contiene 20 vasos. Si se vende 3/5 del contenido, ¿cuántos vasos se vendieron?",
+   answer:12,
+   hint:"Multiplica 20 por 3/5."
+  },
+  {
+   text:"Una receta necesita 3/4 de litro de jugo. Si preparas el doble, ¿cuánto jugo necesitas?",
+   answer:3/2,
+   hint:"Multiplica 3/4 por 2."
+  }
+ ]
+},
+{
+ title:"🧀 Estación 3: Pedidos especiales",
+ scene:"Combina ingredientes y ajusta las cantidades de las recetas.",
+ order:"Receta especial · Cocina",
+ questions:[
+  {
+   text:"Para preparar una pizza se necesitan 2/3 de taza de queso. Si preparas 3/4 de la receta, ¿cuánto queso necesitas?",
+   answer:1/2,
+   hint:"Multiplica numerador por numerador y denominador por denominador."
+  },
+  {
+   text:"Había 5/6 de una pizza disponible. Un cliente compró 1/3. ¿Qué cantidad quedó?",
+   answer:1/2,
+   hint:"Convierte 1/3 a sextos antes de restar."
+  },
+  {
+   text:"Una receta utiliza 3/4 de taza de harina. Si preparas dos recetas, ¿cuánta harina necesitas?",
+   answer:3/2,
+   hint:"Multiplica la cantidad por dos."
+  }
+ ]
+},
+{
+ title:"💰 Estación 4: El cajero",
+ scene:"Revisa las cuentas, aplica los descuentos y atiende a los clientes.",
+ order:"Caja registradora · Cuenta final",
+ questions:[
+  {
+   text:"Tres clientes compraron cada uno 2/5 de una pizza. ¿Cuántas pizzas representan sus compras?",
+   answer:6/5,
+   hint:"Suma tres veces 2/5."
+  },
+  {
+   text:"Una pizza cuesta $8.000. Un cliente tiene un descuento equivalente a 3/4 del precio. ¿Cuánto dinero representa ese descuento?",
+   answer:6000,
+   hint:"Multiplica 8.000 por 3/4."
+  },
+  {
+   text:"Dos clientes compraron 1/2 y 2/3 de pizza respectivamente. ¿Cuánta pizza compraron en total?",
+   answer:7/6,
+   hint:"Utiliza 6 como denominador común."
+  }
+ ]
+}
+];
+
+let levelIndex=0;
+let questionIndex=0;
+let points=0;
+let solved=0;
+let attempts=0;
+let answered=false;
+let sessionResults=[];
+const totalQuestions=12;
+
+function el(id){
+ return document.getElementById(id);
+}
+
+function startGame(){
+ levelIndex=0;
+ questionIndex=0;
+ points=0;
+ solved=0;
+ attempts=0;
+ answered=false;
+ sessionResults=[];
+
+ el("welcome").classList.add("hidden");
+ el("final").classList.add("hidden");
+ el("statsPanel").classList.remove("hidden");
+ el("game").classList.remove("hidden");
+
+ updateStats();
+ loadQuestion();
+}
+
+function updateKitchen(){
+ const scene=levels[levelIndex];
+ el("kitchenLabel").textContent=scene.title.toUpperCase();
+ el("kitchenTitle").textContent=scene.scene;
+ el("kitchenDescription").textContent=
+ "Chef Francisco necesita tu ayuda para completar este pedido. Resuelve el reto y continúa trabajando en la cocina.";
+ el("orderStatus").textContent=scene.order;
+}
+
+function loadQuestion(){
+ if(levelIndex>=levels.length){
+  finishGame();
+  return;
+ }
+
+ const level=levels[levelIndex];
+ const question=level.questions[questionIndex];
+
+ el("levelTitle").textContent=level.title;
+ el("challengeNumber").textContent=
+ "Reto "+(questionIndex+1)+" de 3";
+ el("question").textContent=question.text;
+ el("answer").value="";
+ el("answer").disabled=false;
+ el("feedback").textContent="";
+ el("feedback").className="feedback";
+ el("next").classList.add("hidden");
+
+ attempts=0;
+ answered=false;
+
+ updateKitchen();
+ updateLevels();
+}
+
+function parseFraction(value){
+ value=value.trim().replace(",",".");
+ if(value.includes("/")){
+  const parts=value.split("/");
+  if(parts.length!==2)return NaN;
+  const numerator=Number(parts[0]);
+  const denominator=Number(parts[1]);
+  if(!Number.isFinite(numerator)||
+     !Number.isFinite(denominator)||
+     denominator===0)return NaN;
+  return numerator/denominator;
+ }
+ return Number(value);
+}
+
+function formatFraction(value){
+ if(Number.isInteger(value))return String(value);
+
+ for(let d=2;d<=100;d++){
+  const n=Math.round(value*d);
+  if(Math.abs(n/d-value)<0.000001){
+   function gcd(a,b){return b?gcd(b,a%b):Math.abs(a);}
+   const divisor=gcd(n,d);
+   return (n/divisor)+"/"+(d/divisor);
+  }
+ }
+ return String(Number(value.toFixed(3)));
+}
+
+function checkAnswer(){
+ if(answered)return;
+
+ const input=el("answer").value;
+ const userAnswer=parseFraction(input);
+ const question=levels[levelIndex].questions[questionIndex];
+ const feedback=el("feedback");
+
+ if(input.trim()===""||!Number.isFinite(userAnswer)){
+  feedback.textContent="Escribe una respuesta válida. Ejemplo: 3/4";
+  feedback.className="feedback bad";
+  return;
+ }
+
+ if(Math.abs(userAnswer-question.answer)<0.000001){
+  answered=true;
+  solved++;
+
+  const earned=attempts===0?100:50;
+  points+=earned;
+
+  const correct=formatFraction(question.answer);
+
+  feedback.textContent=
+   "🎉 ¡Excelente! Respuesta correcta: "+correct+
+   ". Pedido completado. Ganaste "+earned+" puntos.";
+  feedback.className="feedback good";
+
+  sessionResults.push({
+   station:levelIndex+1,
+   stationName:levels[levelIndex].title,
+   challenge:questionIndex+1,
+   correctAnswer:correct,
+   failedAttempts:attempts,
+   points:earned
+  });
+
+  el("answer").disabled=true;
+  el("next").classList.remove("hidden");
+  updateStats();
+  playSound(true);
+
+ }else{
+  attempts++;
+  feedback.textContent=
+   "❌ Todavía no es correcto. Revisa tu procedimiento e inténtalo nuevamente.";
+  feedback.className="feedback bad";
+  playSound(false);
+ }
+}
+
+function showHint(){
+ const question=levels[levelIndex].questions[questionIndex];
+ el("feedback").textContent="💡 Pista: "+question.hint;
+ el("feedback").className="feedback hint";
+}
+
+function nextQuestion(){
+ if(!answered)return;
+
+ questionIndex++;
+
+ if(questionIndex>=3){
+  levelIndex++;
+  questionIndex=0;
+ }
+
+ if(levelIndex>=levels.length){
+  finishGame();
+ }else{
+  loadQuestion();
+ }
+}
+
+function updateStats(){
+ el("points").textContent=points;
+ el("solved").textContent=solved;
+
+ const percent=Math.round(solved/totalQuestions*100);
+ el("progress").style.width=percent+"%";
+ el("progressText").textContent=percent+"%";
+}
+
+function updateLevels(){
+ for(let i=0;i<4;i++){
+  const item=el("level"+i);
+  item.classList.toggle("active",i===levelIndex);
+  item.classList.toggle("done",i<levelIndex);
+ }
+}
+
+function finishGame(){
+ el("game").classList.add("hidden");
+ el("statsPanel").classList.remove("hidden");
+ el("final").classList.remove("hidden");
+
+ const percent=Math.round(solved/totalQuestions*100);
+ let rank="Aprendiz";
+ if(points>=400)rank="Pizzero";
+ if(points>=700)rank="Especialista";
+ if(points>=1000)rank="Maestro";
+
+ el("finalPoints").textContent="Puntuación final: "+points+" puntos";
+ el("finalMessage").textContent=
+ "Has terminado las cuatro estaciones de Francisco's Pizza.";
+
+ let report=
+ '<div class="final-summary">'+
+ '<div><strong>'+solved+'/12</strong>Retos correctos</div>'+
+ '<div><strong>'+percent+'%</strong>Desempeño</div>'+
+ '<div><strong>'+points+'</strong>Puntos</div>'+
+ '<div><strong>'+rank+'</strong>Categoría</div>'+
+ '</div>';
+
+ report+='<h3>Resultados por estación</h3>';
+ report+='<table><thead><tr><th>Estación</th><th>Aciertos</th><th>Puntos</th></tr></thead><tbody>';
+
+ levels.forEach((level,index)=>{
+  const rows=sessionResults.filter(r=>r.station===index+1);
+  const stationPoints=rows.reduce((sum,r)=>sum+r.points,0);
+  report+='<tr><td>'+level.title+'</td><td>'+rows.length+'/3</td><td>'+stationPoints+'</td></tr>';
+ });
+
+ report+='</tbody></table>';
+ report+='<h3>Detalle de respuestas</h3><ol>';
+
+ sessionResults.forEach(row=>{
+  report+='<li>'+row.stationName+' - Reto '+row.challenge+
+  ': respuesta '+row.correctAnswer+
+  '; intentos incorrectos: '+row.failedAttempts+
+  '; puntos: '+row.points+'.</li>';
+ });
+
+ report+='</ol><p><strong>¡Felicitaciones! Ayudaste a Francisco a completar todos los pedidos.</strong></p>';
+
+ el("finalReport").innerHTML=report;
+ el("kitchenLabel").textContent="MISIÓN COMPLETADA";
+ el("kitchenTitle").textContent="¡La pizzería es un éxito!";
+ el("kitchenDescription").textContent="Gracias por tu trabajo, maestro pizzero.";
+ el("orderStatus").textContent="Todos los pedidos completados";
+ updateStats();
+ playSound(true);
+}
+
+function resetGame(){
+ el("final").classList.add("hidden");
+ el("statsPanel").classList.add("hidden");
+ el("welcome").classList.remove("hidden");
+ el("game").classList.add("hidden");
+ el("finalReport").innerHTML="";
+ el("kitchenLabel").textContent="PIZZERÍA ARTESANAL · ITALIA";
+ el("kitchenTitle").textContent="El secreto está en la masa.";
+ el("kitchenDescription").textContent=
+ "Bienvenido a nuestra cocina. Los pedidos están llegando y necesitamos un pizzero que domine las fracciones.";
+ el("orderStatus").textContent="Esperando al pizzero...";
+ updateLevels();
+}
+
+function playSound(success){
+ try{
+  const AudioClass=window.AudioContext||window.webkitAudioContext;
+  if(!AudioClass)return;
+  const context=new AudioClass();
+  const oscillator=context.createOscillator();
+  const gain=context.createGain();
+
+  oscillator.connect(gain);
+  gain.connect(context.destination);
+  oscillator.frequency.value=success?650:180;
+  gain.gain.setValueAtTime(.07,context.currentTime);
+  gain.gain.exponentialRampToValueAtTime(.001,context.currentTime+.2);
+  oscillator.start();
+  oscillator.stop(context.currentTime+.21);
+  oscillator.onended=()=>context.close();
+ }catch(error){}
+}
+
+el("answer").addEventListener("keydown",function(event){
+ if(event.key==="Enter")checkAnswer();
+});
+</script>
+
+</body>
+</html>
